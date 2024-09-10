@@ -38,7 +38,7 @@ class _EstudoFuncScreenState extends State<EstudoFuncScreen> {
       appBar: AppBar(
         title: Text('Cadastro'),
       ),
-      body: Column(
+      body:Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
