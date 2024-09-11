@@ -17,7 +17,7 @@ class _EstudoFuncScreenState extends State<EstudoFuncScreen> {
 
   bool _isMale = false;
   bool _isFemale = false;
-  Gender generoDefinido=Gender.masculino;
+  Gender generoDefinido = Gender.masculino;
   List<UserModel> users = [];
 
   void mostrarInfo() {
@@ -38,107 +38,108 @@ class _EstudoFuncScreenState extends State<EstudoFuncScreen> {
       appBar: AppBar(
         title: Text('Cadastro'),
       ),
-      body:Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: nameController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Enter your username',
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: nameController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Enter your username',
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: emailController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Enter your email',
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: emailController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Enter your email',
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              keyboardType: TextInputType.number,
-              controller: cellController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Enter your cellphone',
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                keyboardType: TextInputType.number,
+                controller: cellController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Enter your cellphone',
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: addressController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Enter your Address',
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: addressController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Enter your Address',
+                ),
               ),
             ),
-          ),
-          CheckboxListTile(
-            title: Text('Masculino'),
-            value: _isMale,
-            onChanged: (bool? value) {
-              setState(() {
-                _isMale = value ?? false;
-                if (_isMale) {
-                   generoDefinido=Gender.masculino;
-                  _isFemale = false;
-                }
-              });
-            },
-          ),
-          CheckboxListTile(
-            title: Text('Feminino'),
-            value: _isFemale,
-            onChanged: (bool? value) {
-              setState(() {
-                _isFemale = value ?? false;
-                if (_isFemale) {
-                  generoDefinido=Gender.feminino;
-                  _isMale = false; 
-                  
-                }
-              });
-            },
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  mostrarInfo();
-                },
-                child: Text('Salvar'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  if (users.isNotEmpty) {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => ShowUserScreen(users: users),
-                      ),
-                    );
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: const Text('Nenhum usuário salvo!'),
-                      ),
-                    );
+            CheckboxListTile(
+              title: Text('Masculino'),
+              value: _isMale,
+              onChanged: (bool? value) {
+                setState(() {
+                  _isMale = value ?? false;
+                  if (_isMale) {
+                    generoDefinido = Gender.masculino;
+                    _isFemale = false;
                   }
-                },
-                child: Text('Ver'),
-              ),
-            ],
-          ),
-        ],
+                });
+              },
+            ),
+            CheckboxListTile(
+              title: Text('Feminino'),
+              value: _isFemale,
+              onChanged: (bool? value) {
+                setState(() {
+                  _isFemale = value ?? false;
+                  if (_isFemale) {
+                    generoDefinido = Gender.feminino;
+                    _isMale = false;
+                  }
+                });
+              },
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    mostrarInfo();
+                  },
+                  child: Text('Salvar'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    if (users.isNotEmpty) {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => ShowUserScreen(users: users),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: const Text('Nenhum usuário salvo!'),
+                        ),
+                      );
+                    }
+                  },
+                  child: Text('Ver'),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
